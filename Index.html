@@ -4,96 +4,270 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dra. Juliana Souza - Ginecologista</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-    body { background: #fdfdfd; color: #333; line-height: 1.6; }
-    header { background-color: #e4f1f6; padding: 40px 20px; text-align: center; }
-    header img { border-radius: 100%; width: 120px; height: 120px; object-fit: cover; border: 4px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    header h1 { margin-top: 20px; font-size: 1.8em; color: #1a4b5c; }
-    header p { color: #666; font-size: 1em; }
+    :root {
+      --primary-color: #2c6e9b;
+      --secondary-color: #e8f4f8;
+      --accent-color: #4a90e2;
+      --text-color: #2c3e50;
+      --light-text: #666;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
 
-    .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-    .section { margin-bottom: 40px; }
-    .section h2 { font-size: 1.5em; margin-bottom: 10px; color: #1a4b5c; border-left: 4px solid #1a4b5c; padding-left: 10px; }
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+      font-family: 'Inter', sans-serif; 
+    }
 
-    .procedimentos ul { list-style: none; padding: 0; }
-    .procedimentos li { background: #f1f9fb; margin-bottom: 10px; padding: 12px; border-radius: 8px; }
+    body { 
+      background: var(--white); 
+      color: var(--text-color); 
+      line-height: 1.6; 
+    }
+
+    header { 
+      background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><rect width="1" height="1" fill="rgba(255,255,255,0.1)"/></svg>');
+      opacity: 0.1;
+    }
+
+    header img { 
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    header img:hover {
+      transform: scale(1.05);
+    }
+
+    header h1 { 
+      margin-top: 25px;
+      font-size: 2.2em;
+      color: var(--white);
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    header p { 
+      color: var(--white);
+      font-size: 1.1em;
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+
+    .container { 
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section { 
+      margin-bottom: 60px;
+      background: var(--white);
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .section h2 { 
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+      border-left: 4px solid var(--accent-color);
+      padding-left: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h2 i {
+      color: var(--accent-color);
+    }
+
+    .procedimentos ul { 
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .procedimentos li { 
+      background: var(--secondary-color);
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .procedimentos li:hover {
+      background: var(--primary-color);
+      color: var(--white);
+      transform: translateX(5px);
+    }
+
+    .procedimentos li i {
+      color: var(--accent-color);
+    }
+
+    .depoimentos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
 
     .depoimentos blockquote {
-      background: #f0f0f0;
-      padding: 15px;
-      margin: 10px 0;
-      border-left: 4px solid #1a4b5c;
-      border-radius: 5px;
+      background: var(--secondary-color);
+      padding: 25px;
+      border-radius: 10px;
+      position: relative;
       font-style: italic;
+      transition: var(--transition);
+    }
+
+    .depoimentos blockquote:hover {
+      transform: translateY(-5px);
+    }
+
+    .depoimentos blockquote::before {
+      content: '"';
+      font-size: 4em;
+      color: var(--accent-color);
+      opacity: 0.2;
+      position: absolute;
+      top: -20px;
+      left: 10px;
     }
 
     .contato {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 60px;
     }
+
     .contato a {
-      background: #1a4b5c;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 25px;
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 18px 35px;
+      border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
-      transition: background 0.3s;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow);
     }
+
     .contato a:hover {
-      background: #145065;
+      background: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      background: #f2f2f2;
-      color: #777;
+      padding: 30px;
+      background: var(--secondary-color);
+      color: var(--light-text);
       font-size: 0.9em;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 40px 20px;
+      }
+
+      header img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .container {
+        padding: 30px 20px;
+      }
+
+      .section {
+        padding: 20px;
+      }
+
+      .procedimentos ul {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="https://via.placeholder.com/120" alt="Foto da médica" />
+    <img src="https://via.placeholder.com/150" alt="Foto da médica" />
     <h1>Dra. Juliana Souza</h1>
     <p>Ginecologista e Obstetra • CRM 000000-PR</p>
   </header>
 
   <div class="container">
     <section class="section sobre">
-      <h2>Sobre Mim</h2>
-      <p>Sou médica ginecologista com mais de 10 anos de experiência, atuando com empatia e acolhimento em cada etapa do cuidado feminino. Ofereço um atendimento humanizado e personalizado.</p>
+      <h2><i class="fas fa-user-md"></i> Sobre Mim</h2>
+      <p>Sou médica ginecologista com mais de 10 anos de experiência, atuando com empatia e acolhimento em cada etapa do cuidado feminino. Ofereço um atendimento humanizado e personalizado, sempre priorizando o bem-estar e a saúde das minhas pacientes.</p>
     </section>
 
     <section class="section procedimentos">
-      <h2>Procedimentos</h2>
+      <h2><i class="fas fa-stethoscope"></i> Procedimentos</h2>
       <ul>
-        <li>Consulta ginecológica</li>
-        <li>Pré-natal completo</li>
-        <li>Colposcopia</li>
-        <li>Inserção de DIU</li>
-        <li>Tratamentos hormonais</li>
+        <li><i class="fas fa-clipboard-check"></i> Consulta ginecológica</li>
+        <li><i class="fas fa-baby"></i> Pré-natal completo</li>
+        <li><i class="fas fa-microscope"></i> Colposcopia</li>
+        <li><i class="fas fa-plus-circle"></i> Inserção de DIU</li>
+        <li><i class="fas fa-pills"></i> Tratamentos hormonais</li>
       </ul>
     </section>
 
     <section class="section depoimentos">
-      <h2>O que dizem minhas pacientes</h2>
-      <blockquote>“A Dra. Juliana me atendeu com tanto cuidado e carinho. Recomendo demais!” – Ana C.</blockquote>
-      <blockquote>“Senti confiança desde a primeira consulta. Excelente profissional!” – Marina R.</blockquote>
+      <h2><i class="fas fa-comments"></i> O que dizem minhas pacientes</h2>
+      <blockquote>"A Dra. Juliana me atendeu com tanto cuidado e carinho. Sua dedicação e profissionalismo são impressionantes. Recomendo demais!" – Ana C.</blockquote>
+      <blockquote>"Senti confiança desde a primeira consulta. Excelente profissional, muito atenciosa e competente!" – Marina R.</blockquote>
     </section>
 
     <div class="contato">
-      <a href="https://wa.me/55SEUNUMERO" target="_blank">Agendar consulta via WhatsApp</a>
+      <a href="https://wa.me/55SEUNUMERO" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        Agendar consulta via WhatsApp
+      </a>
     </div>
   </div>
 
   <footer>
     © 2025 Dra. Juliana Souza | Todos os direitos reservados
   </footer>
-
 </body>
 </html>
